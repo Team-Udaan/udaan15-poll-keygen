@@ -1,37 +1,47 @@
 <link rel="import" href="../../../bower_components/paper-shadow/paper-shadow.html"/>
 <link rel="import" href="../../../bower_components/paper-input/paper-input-decorator.html"/>
+<link rel="import" href="../../../bower_components/core-input/core-input.html"/>
+<link rel="import" href="../../../bower_components/core-icons/core-icons.html"/>
 
 <polymer-element name="keygen-app">
   <template>
     <link rel="stylesheet" href="keygen-app.css">
 
     <paper-shadow z="1" class="container">
-      <h1 class="header">Udaan15 Poll Keygen</h1>
+      <h2 class="header">Udaan15 Poll Keygen</h2>
       <paper-input-decorator id="enroll" floatingLabel label="Enrollment No.">
         <input autofocus is="core-input" type="text" title="Enrollment No." value="{{enroll}}"/>
       </paper-input-decorator>
-      <paper-input-decorator id="key" floatingLabel label="Key">
-        <input is="core-input" type="text" disabled title="Key" value="{{key}}"/>
-      </paper-input-decorator>
+      <div class="key" horizontal layout center-center>
+        {{key}}
+      </div>
+      <hr/>
+      <div class="footer" horizontal layout end center-justified>
+        Designed with <core-icon icon="favorite"></core-icon> by <a href="http://github.com/dhruvin2910" target="_blank">Dhruvin Gandhi</a>
+      </div>
     </paper-shadow>
 
   </template>
   <script>
     (function () {
+      'use strict';
+      /* jshint ignore:start */
       Polymer({
+        enroll: '',
+        key: '',
         sanitizeEnroll: function () {
           this.enroll = this.enroll.replace(/\D/, '');
         },
-        enrollChanged: function (oldValue) {
+        enrollChanged: function () {
           this.sanitizeEnroll();
           if(this.enroll == ''){
             this.key = '';
           } else {
             this.key = md5(md5(this.enroll)).substr(0, 4);
           }
-          this.$.key.updateLabelVisibility(this.key);
         }
       });
+      /* jshint ignore:end */
     })();
   </script>
 </polymer-element>

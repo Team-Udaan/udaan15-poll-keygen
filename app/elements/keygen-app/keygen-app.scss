@@ -2,6 +2,22 @@
   display: block;
 }
 
+.header {
+  text-align: center;
+}
+
+.key {
+  height: 100px;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.footer {
+  height: 75px;
+  text-align: center;
+}
+
 paper-shadow.container {
   padding: 50px 10px;
   margin: 50px 10px;
